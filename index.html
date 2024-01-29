@@ -150,11 +150,9 @@
 </head>
 
 <body>
-    <audio id="backgroundMusic" src="your-audio-file.mp3" autoplay loop controls>
-        Your browser does not support the audio element.
-    </audio>
 
-    <audio id="buttonClickSound" src="button-click.mp3"></audio>
+    <audio id="backgroundMusic" src="music/君子堂.mp3"></audio>
+    <audio id="buttonClickSound" src="music/Up1.ogg"></audio>
 
     <div class="overlay" id="overlay">
         <video id="myVideo" controls>
@@ -168,6 +166,7 @@
     </div>
 
     <button id="btn1" class="btn" onclick="fadeOut()"><span>冒險開始</span> <em></em></button>
+    <button id="btn1" class="btn" onclick="fadeOut()"><span>冒險開始</span> <em></em></button>
 
     <!-- 你的內容在這裡 -->
 
@@ -175,14 +174,29 @@
         var backgroundMusic = document.getElementById('backgroundMusic');
         var buttonClickSound = document.getElementById('buttonClickSound');
 
+        window.onclick = function(){
+            backgroundMusic.play();
+        }
+
+        window.addEventListener("load", function (event) {
+            // 當網頁載入完成後，播放音樂
+            // var audio = new Audio('music/君子堂.mp3');
+            // audio.play();
+            // backgroundMusic.play();
+            // buttonClickSound.play();
+        });
+
+
         function fadeOut() {
+            backgroundMusic.muted = true;
             buttonClickSound.play();
+            // backgroundMusic.play();
             var overlay = document.getElementById('overlay');
             var video = document.getElementById('myVideo');
             var btn = document.getElementById('btn1');
             // overlay.style.display = 'block';
-            backgroundMusic.pause(); // 暫停音樂
-            backgroundMusic.currentTime = 0; // 重置播放時間，這樣下次播放會從頭開始
+            
+            //backgroundMusic.currentTime = 0; // 重置播放時間，這樣下次播放會從頭開始
 
             overlay.style.opacity = 1;
             btn.style.display = 'none';
