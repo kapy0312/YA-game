@@ -26,12 +26,30 @@
             padding: 10px;
             width: 300px;
             margin: 20px;
-            /* 距離左上邊界各20px */
-            background-color: white;
-            color: black;
+            background-color: rgb(121, 187, 173);
+            /* 青绿色 */
+            color: white;
+            /* 白色文字 */
             border: 2px solid black;
             text-align: center;
-            /* 將文字置中 */
+        }
+
+        .corner-image {
+            position: absolute;
+            width: 100px;
+            /* 根据需要调整图片大小 */
+            height: 100px;
+            /* 根据需要调整图片大小 */
+        }
+
+        .top-left {
+            top: 65px;
+            left: -10px;
+        }
+
+        .bottom-right {
+            top: -25px;
+            left: 285px;
         }
 
         h1 {
@@ -151,21 +169,22 @@
 
 <body>
 
-    <audio id="backgroundMusic" src="music/君子堂.mp3"></audio>
+    <audio id="backgroundMusic" src="music/BGM.mp3"></audio>
     <audio id="buttonClickSound" src="music/Up1.ogg"></audio>
 
     <div class="overlay" id="overlay">
         <video id="myVideo" controls>
-            <source src="video/影片2.mp4" type="video/mp4">
+            <source src="video/生日快樂.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 
     <div class="title-container">
-        <h1>葉文鴻的冒險之旅</h1>
+        <h1>文鴻的大事紀之路</h1>
+        <img id="img1" src="img/閃亮.png" class="corner-image top-left">
+        <img id="img2" src="img/閃亮.png" class="corner-image bottom-right">
     </div>
 
-    <button id="btn1" class="btn" onclick="fadeOut()"><span>冒險開始</span> <em></em></button>
     <button id="btn1" class="btn" onclick="fadeOut()"><span>冒險開始</span> <em></em></button>
 
     <!-- 你的內容在這裡 -->
@@ -174,7 +193,7 @@
         var backgroundMusic = document.getElementById('backgroundMusic');
         var buttonClickSound = document.getElementById('buttonClickSound');
 
-        window.onclick = function(){
+        window.onclick = function () {
             backgroundMusic.play();
         }
 
@@ -194,11 +213,15 @@
             var overlay = document.getElementById('overlay');
             var video = document.getElementById('myVideo');
             var btn = document.getElementById('btn1');
+            var img1 = document.getElementById('img1');
+            var img2 = document.getElementById('img2');
             // overlay.style.display = 'block';
-            
+
             //backgroundMusic.currentTime = 0; // 重置播放時間，這樣下次播放會從頭開始
 
             overlay.style.opacity = 1;
+            img1.style.display = 'none';
+            img2.style.display = 'none';
             btn.style.display = 'none';
 
             setTimeout(function () {
